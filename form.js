@@ -33,6 +33,19 @@
     }
   };
 
+  function syncVisibleRadioValues(name) {
+    const inputs = Array.from(form.querySelectorAll("input[name='" + name + "']"));
+
+    inputs.forEach(function (input) {
+      const label = input.closest("label");
+      const optionText = label ? label.querySelector("span") : null;
+
+      if (optionText) {
+        input.value = optionText.textContent.trim();
+      }
+    });
+  }
+
   function setStatus(message, type) {
     status.textContent = message;
     status.classList.toggle("is-error", type === "error");
@@ -174,4 +187,7 @@
       validateConfirm();
     }
   });
+
+  syncVisibleRadioValues("Activity");
+  syncVisibleRadioValues("Food");
 }());

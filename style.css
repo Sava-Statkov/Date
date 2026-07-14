@@ -391,6 +391,8 @@ body.page-exit .success-content {
 
 .field-label input {
   width: 100%;
+  max-width: 100%;
+  min-width: 0;
   min-height: 52px;
   border: 1px solid rgba(20, 20, 20, 0.14);
   border-radius: var(--radius-sm);
@@ -402,6 +404,35 @@ body.page-exit .success-content {
     border-color 220ms ease,
     box-shadow 220ms ease,
     background-color 220ms ease;
+}
+
+.field-label input[type="date"],
+.field-label input[type="time"] {
+  display: block;
+  overflow: hidden;
+  padding-right: 12px;
+  line-height: 1.2;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  -webkit-appearance: none;
+  appearance: none;
+  background-clip: padding-box;
+  color-scheme: light;
+}
+
+.field-label input[type="date"]::-webkit-date-and-time-value,
+.field-label input[type="time"]::-webkit-date-and-time-value {
+  min-width: 0;
+  max-width: 100%;
+  text-align: left;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.field-label input[type="date"]::-webkit-calendar-picker-indicator,
+.field-label input[type="time"]::-webkit-calendar-picker-indicator {
+  margin-left: 4px;
+  padding: 0;
 }
 
 .field-label input:focus {

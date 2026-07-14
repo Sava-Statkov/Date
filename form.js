@@ -46,110 +46,6 @@
     });
   }
 
-  function clampNumber(value, min, max) {
-    return Math.min(Math.max(value, min), max);
-  }
-
-  function initWalletSlider() {
-    const options = ["Леко", "Достатъчно", "Започваш да ме притесняваш"];
-    const slider = document.querySelector("[data-wallet-slider]");
-    const track = slider ? slider.querySelector(".wallet-track-shell") : null;
-    const input = document.getElementById("wallet-field");
-    const steps = slider ? Array.from(slider.querySelectorAll("[data-wallet-step]")) : [];
-
-    if (!slider || !track || !input) {
-      return;
-    }
-
-    let currentIndex = options.indexOf(input.value);
-    let isDragging = false;
-
-    if (currentIndex === -1) {
-      currentIndex = 1;
-    }
-
-    function setWalletIndex(index) {
-      currentIndex = clampNumber(Math.round(index), 0, options.length - 1);
-
-      const selectedValue = options[currentIndex];
-      const position = currentIndex * 50;
-
-      slider.style.setProperty("--wallet-position", position + "%");
-      slider.setAttribute("aria-valuenow", String(currentIndex + 1));
-      slider.setAttribute("aria-valuetext", selectedValue);
-      input.value = selectedValue;
-
-      steps.forEach(function (step) {
-        step.classList.toggle("is-selected", Number(step.dataset.walletStep) === currentIndex);
-      });
-    }
-
-    function getIndexFromPointer(event) {
-      const rect = track.getBoundingClientRect();
-      const pointerX = clampNumber(event.clientX - rect.left, 0, rect.width);
-      const ratio = rect.width ? pointerX / rect.width : 0.5;
-
-      return Math.round(ratio * (options.length - 1));
-    }
-
-    function updateFromPointer(event) {
-      event.preventDefault();
-      setWalletIndex(getIndexFromPointer(event));
-    }
-
-    slider.addEventListener("pointerdown", function (event) {
-      isDragging = true;
-      slider.classList.add("is-dragging");
-      slider.focus();
-
-      if (slider.setPointerCapture) {
-        slider.setPointerCapture(event.pointerId);
-      }
-
-      updateFromPointer(event);
-    });
-
-    slider.addEventListener("pointermove", function (event) {
-      if (!isDragging) {
-        return;
-      }
-
-      updateFromPointer(event);
-    });
-
-    ["pointerup", "pointercancel", "lostpointercapture"].forEach(function (eventName) {
-      slider.addEventListener(eventName, function () {
-        isDragging = false;
-        slider.classList.remove("is-dragging");
-        setWalletIndex(currentIndex);
-      });
-    });
-
-    slider.addEventListener("keydown", function (event) {
-      if (event.key === "ArrowLeft" || event.key === "ArrowDown") {
-        event.preventDefault();
-        setWalletIndex(currentIndex - 1);
-      }
-
-      if (event.key === "ArrowRight" || event.key === "ArrowUp") {
-        event.preventDefault();
-        setWalletIndex(currentIndex + 1);
-      }
-
-      if (event.key === "Home") {
-        event.preventDefault();
-        setWalletIndex(0);
-      }
-
-      if (event.key === "End") {
-        event.preventDefault();
-        setWalletIndex(options.length - 1);
-      }
-    });
-
-    setWalletIndex(currentIndex);
-  }
-
   function setStatus(message, type) {
     status.textContent = message;
     status.classList.toggle("is-error", type === "error");
@@ -227,6 +123,16 @@
   function buildFormData() {
     const data = new FormData(form);
     data.set("Checkbox state", fields.confirm.checkbox.checked ? "Отбелязано" : "Не е отбелязано");
+    data.set("message", [
+      "Activity: " + (data.get("Activity") || "-"),
+      "Food: " + (data.get("Food") || "-"),
+      "Date: " + (data.get("Date") || "-"),
+      "Time: " + (data.get("Time") || "-"),
+      "Wallet: " + (data.get("Wallet") || "-"),
+      "Delay: " + (data.get("Delay") || "-"),
+      "Checkbox state: " + data.get("Checkbox state")
+    ].join("\n"));
+
     return data;
   }
 
@@ -243,9 +149,12 @@
           Accept: "application/json"
         }
       });
+      const result = await response.json().catch(function () {
+        return null;
+      });
 
-      if (!response.ok) {
-        throw new Error("Formspree request failed");
+      if (!response.ok || !result || result.success !== true) {
+        throw new Error("Web3Forms request failed");
       }
 
       setStatus("Готово. Прехвърлям те нататък...", "success");
@@ -253,7 +162,7 @@
         window.SimonkaSite.navigateWithFade("success.html");
       }, 420);
     } catch (error) {
-      setStatus("Не успях да изпратя формата. Провери Formspree линка и пробвай пак.", "error");
+      setStatus("Не успях да изпратя формата. Провери Web3Forms ключа и пробвай пак.", "error");
       submitButton.disabled = false;
       submitButton.textContent = "Изпрати";
     }
@@ -294,6 +203,6 @@
 
   syncVisibleRadioValues("Activity");
   syncVisibleRadioValues("Food");
+  syncVisibleRadioValues("Wallet");
   syncVisibleRadioValues("Delay");
-  initWalletSlider();
 }());

@@ -19,8 +19,10 @@
         <h1 id="form-title">ОТ СЕГА БЕЗ ИЗЛИШНИ ПРИКАЗКИ </h1>
       </header>
 
-      <form id="date-form" action="https://formspree.io/f/xrenbpdy" method="POST" novalidate>
-        <input type="hidden" name="_subject" value="Нова среща със Симонка">
+      <form id="date-form" action="https://api.web3forms.com/submit" method="POST" novalidate>
+        <input type="hidden" name="access_key" value="8707fc64-793f-4a68-8274-8995b80c4cbd">
+        <input type="hidden" name="subject" value="Нова среща със Симонка">
+        <input type="hidden" name="from_name" value="Date Website">
 
         <!-- Question 1 -->
         <fieldset class="question" data-field-group="Activity">
@@ -118,39 +120,22 @@
           <p class="error-message" id="datetime-error" role="alert"></p>
         </fieldset>
 
-        <!-- Wallet slider question -->
+        <!-- Wallet question -->
         <fieldset class="question wallet-question" data-field-group="Wallet">
           <legend>Колко ще ми олекне портфейлът? 💸💸💸</legend>
-          <p class="question-subtitle"></p>
-
-          <input id="wallet-field" type="hidden" name="Wallet" value="Достатъчно">
-
-          <div
-            class="wallet-slider"
-            data-wallet-slider
-            role="slider"
-            tabindex="0"
-            aria-label="Колко ще ми олекне портфейлът?"
-            aria-valuemin="1"
-            aria-valuemax="3"
-            aria-valuenow="2"
-            aria-valuetext="Достатъчно"
-          >
-            <div class="wallet-track-shell">
-              <div class="wallet-track" aria-hidden="true">
-                <div class="wallet-fill"></div>
-              </div>
-              <span class="wallet-tick" data-wallet-step="0" aria-hidden="true"></span>
-              <span class="wallet-tick is-selected" data-wallet-step="1" aria-hidden="true"></span>
-              <span class="wallet-tick" data-wallet-step="2" aria-hidden="true"></span>
-              <span class="wallet-handle" aria-hidden="true"></span>
-            </div>
-
-            <div class="wallet-steps" aria-hidden="true">
-              <span class="wallet-step" data-wallet-step="0">Леко</span>
-              <span class="wallet-step is-selected" data-wallet-step="1">Достатъчно</span>
-              <span class="wallet-step" data-wallet-step="2">Започваш да ме притесняваш</span>
-            </div>
+          <div class="option-list">
+            <label class="radio-option">
+              <input type="radio" name="Wallet" value="Леко">
+              <span>Леко</span>
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="Wallet" value="Достатъчно" checked>
+              <span>Достатъчно</span>
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="Wallet" value="Започваш да ме притесняваш">
+              <span>Започваш да ме притесняваш</span>
+            </label>
           </div>
         </fieldset>
 

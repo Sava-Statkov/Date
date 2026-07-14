@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#d69a00">
+  <title>Само още няколко нещица</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body data-page="form">
+  <!-- Fixed romantic background -->
+  <div class="background-layer" aria-hidden="true"></div>
+
+  <!-- Form page content -->
+  <main class="page form-page">
+    <section class="form-card animate-in" aria-labelledby="form-title">
+      <header class="form-header">
+        <p class="form-kicker">Почти сме готови</p>
+        <h1 id="form-title">Само още няколко нещица</h1>
+      </header>
+
+      <form id="date-form" action="https://formspree.io/f/REPLACE_ME" method="POST" novalidate>
+        <input type="hidden" name="_subject" value="Нова среща със Симонка">
+
+        <!-- Question 1 -->
+        <fieldset class="question" data-field-group="Activity">
+          <legend>Какво ти се прави?</legend>
+          <div class="option-list">
+            <label class="radio-option">
+              <input type="radio" name="Activity" value="Разходка" required>
+              <span>Разходка</span>
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="Activity" value="Кафе">
+              <span>Билярд</span>
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="Activity" value="Вечеря">
+              <span>Боулинг</span>
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="Activity" value="Бар">
+              <span>Музей</span>
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="Activity" value="Кино">
+              <span>Кино</span>
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="Activity" value="Изненада">
+              <span>Обикаляне с колата</span>
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="Activity" value="Изненада">
+              <span>Терапия за двойки??</span>
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="Activity" value="Изненада">
+              <span>У вас / У нас</span>
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="Activity" value="Изненада">
+              <span>Изненада</span>
+            </label>
+          </div>
+          <p class="error-message" id="activity-error" role="alert"></p>
+        </fieldset>
+
+        <!-- Question 2 -->
+        <fieldset class="question" data-field-group="Food">
+          <legend>Какво ти се хапва?</legend>
+          <div class="option-list">
+            <label class="radio-option">
+              <input type="radio" name="Food" value="Пица" required>
+              <span>Пица</span>
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="Food" value="Суши">
+              <span>Паста</span>
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="Food" value="Паста">
+              <span>Суши</span>
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="Food" value="Бургери">
+              <span>Нещо полезно</span>
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="Food" value="Нещо сладко">
+              <span>Нещо сладко</span>
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="Food" value="Нямам претенции">
+              <span>Нямам претенции</span>
+            </label>
+          </div>
+          <p class="error-message" id="food-error" role="alert"></p>
+        </fieldset>
+
+        <!-- Question 3 -->
+        <fieldset class="question">
+          <legend>Кога ти е удобно?</legend>
+          <div class="date-time-grid">
+            <label class="field-label" for="date-field">
+              <span>Дата</span>
+              <input id="date-field" type="date" name="Date" required>
+            </label>
+            <label class="field-label" for="time-field">
+              <span>Час</span>
+              <input id="time-field" type="time" name="Time" required>
+            </label>
+          </div>
+          <p class="error-message" id="datetime-error" role="alert"></p>
+        </fieldset>
+
+        <!-- Required confirmation -->
+        <fieldset class="question confirmation-question">
+          <label class="checkbox-option">
+            <input id="confirm-field" type="checkbox" name="Checkbox state" value="Отбелязано" required>
+            <span>Ако си прочела и попълнила всичко и не мислиш да ме изпържиш, отбележи тук.</span>
+          </label>
+          <p class="error-message" id="confirm-error" role="alert"></p>
+        </fieldset>
+
+        <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+
+        <button class="button button-primary submit-button" type="submit">
+          Изпрати
+        </button>
+      </form>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+  <script src="form.js"></script>
+</body>
+</html>

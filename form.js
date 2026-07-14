@@ -190,4 +190,5 @@
 
   syncVisibleRadioValues("Activity");
   syncVisibleRadioValues("Food");
+  syncVisibleRadioValues("Delay");
 }());

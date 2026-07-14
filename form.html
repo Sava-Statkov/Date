@@ -16,7 +16,7 @@
     <section class="form-card animate-in" aria-labelledby="form-title">
       <header class="form-header">
         <p class="form-kicker">Почти сме готови</p>
-        <h1 id="form-title">Само още няколко нещица</h1>
+        <h1 id="form-title">Добре… вече няма измъкване. Остана само бюрокрацията.</h1>
       </header>
 
       <form id="date-form" action="https://formspree.io/f/meeyqbkk" method="POST" novalidate>
@@ -114,11 +114,40 @@
           <p class="error-message" id="datetime-error" role="alert"></p>
         </fieldset>
 
+        
+
+        <!-- Optional delay question -->
+        <fieldset class="question" data-field-group="Delay">
+          <legend>Колко време ще закъснееш?</legend>
+          <div class="option-list">
+            <label class="radio-option">
+              <input type="radio" name="Delay" value="Няма да закъснея">
+              <span>Няма да закъснея  [малко вероятно]</span>
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="Delay" value="5 минути">
+              <span>10 минути</span>
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="Delay" value="15 минути">
+              <span>20 минути</span>
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="Delay" value="Половин час">
+              <span>Половин час</span>
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="Delay" value="Ще пиша &quot;идвам&quot; докато още съм вкъщи">
+              <span>Ще започна да се оправям в часа на срещата</span>
+            </label>
+          </div>
+        </fieldset>
+
         <!-- Required confirmation -->
         <fieldset class="question confirmation-question">
           <label class="checkbox-option">
             <input id="confirm-field" type="checkbox" name="Checkbox state" value="Отбелязано" required>
-            <span>Ако си прочела и попълнила всичко и не мислиш да ме изпържиш, отбележи тук.</span>
+            <span>Ако си прочела и попълнила всичко и НЕ мислиш да ме изпържиш, отбележи тук.</span>
           </label>
           <p class="error-message" id="confirm-error" role="alert"></p>
         </fieldset>

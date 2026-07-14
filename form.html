@@ -15,8 +15,8 @@
   <main class="page form-page">
     <section class="form-card animate-in" aria-labelledby="form-title">
       <header class="form-header">
-        <p class="form-kicker">Почти сме готови</p>
-        <h1 id="form-title">Добре… вече няма измъкване. Остана бюрокрацията.</h1>
+        <p class="form-kicker">Едва те навих..</p>
+        <h1 id="form-title">ОТ СЕГА БЕЗ ИЗЛИШНИ ПРИКАЗКИ </h1>
       </header>
 
       <form id="date-form" action="https://formspree.io/f/meeyqbkk" method="POST" novalidate>
@@ -60,7 +60,7 @@
             </label>
             <label class="radio-option">
               <input type="radio" name="Activity" value="Изненада">
-              <span>Изненада</span>
+              <span>Нямам претенции</span>
             </label>
           </div>
           <p class="error-message" id="activity-error" role="alert"></p>
@@ -118,7 +118,41 @@
           <p class="error-message" id="datetime-error" role="alert"></p>
         </fieldset>
 
-        
+        <!-- Wallet slider question -->
+        <fieldset class="question wallet-question" data-field-group="Wallet">
+          <legend>Колко ще ми олекне портфейлът? 💸💸💸</legend>
+          <p class="question-subtitle"></p>
+
+          <input id="wallet-field" type="hidden" name="Wallet" value="Достатъчно">
+
+          <div
+            class="wallet-slider"
+            data-wallet-slider
+            role="slider"
+            tabindex="0"
+            aria-label="Колко ще ми олекне портфейлът?"
+            aria-valuemin="1"
+            aria-valuemax="3"
+            aria-valuenow="2"
+            aria-valuetext="Достатъчно"
+          >
+            <div class="wallet-track-shell">
+              <div class="wallet-track" aria-hidden="true">
+                <div class="wallet-fill"></div>
+              </div>
+              <span class="wallet-tick" data-wallet-step="0" aria-hidden="true"></span>
+              <span class="wallet-tick is-selected" data-wallet-step="1" aria-hidden="true"></span>
+              <span class="wallet-tick" data-wallet-step="2" aria-hidden="true"></span>
+              <span class="wallet-handle" aria-hidden="true"></span>
+            </div>
+
+            <div class="wallet-steps" aria-hidden="true">
+              <span class="wallet-step" data-wallet-step="0">Леко</span>
+              <span class="wallet-step is-selected" data-wallet-step="1">Достатъчно</span>
+              <span class="wallet-step" data-wallet-step="2">Започваш да ме притесняваш</span>
+            </div>
+          </div>
+        </fieldset>
 
         <!-- Optional delay question -->
         <fieldset class="question" data-field-group="Delay">
@@ -126,15 +160,11 @@
           <div class="option-list">
             <label class="radio-option">
               <input type="radio" name="Delay" value="Няма да закъснея">
-              <span>Няма да закъснея  [малко вероятно]</span>
+              <span>Няма да закъснея (малко вероятно)</span>
             </label>
             <label class="radio-option">
               <input type="radio" name="Delay" value="5 минути">
-              <span>10 минути</span>
-            </label>
-            <label class="radio-option">
-              <input type="radio" name="Delay" value="15 минути">
-              <span>20 минути</span>
+              <span>15 минути</span>
             </label>
             <label class="radio-option">
               <input type="radio" name="Delay" value="Половин час">

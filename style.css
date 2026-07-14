@@ -186,7 +186,7 @@ body.page-exit .success-content {
 .profile-photo {
   width: clamp(162px, 48vw, 184px);
   aspect-ratio: 1;
-  border-radius: 50%;
+  border-radius: 30%;
   border: 6px solid var(--white);
   object-fit: cover;
   background: var(--light-gray);
